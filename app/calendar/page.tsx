@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useAdminStore } from '@/lib/adminStore';
 import { ActivityCard } from '@/components/ActivityCard';
 import { Input } from '@/components/ui/input';
@@ -14,7 +14,6 @@ const ACTIVITY_TYPES: ActivityType[] = ['LECTURE', 'LAB_WORK', 'EXHIBITION', 'SO
 export default function CalendarPage() {
   const { searchQuery, setSearchQuery, filterType, setFilterType } = useAppStore();
   const { activities, loadData } = useAdminStore();
-  const [viewMode, setViewMode] = useState<'all' | 'upcoming'>('all');
 
   useEffect(() => {
     loadData();

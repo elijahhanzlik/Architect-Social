@@ -22,7 +22,7 @@ export function EventForm({ event, mode }: EventFormProps) {
   const router = useRouter();
   const { locations, addActivity, updateActivity } = useAdminStore();
 
-  const [formData, setFormData] = useState<Partial<Activity>>({
+  const [formData, setFormData] = useState<Partial<Activity>>(() => ({
     id: event?.id || `evt_${Date.now()}`,
     title: event?.title || '',
     shortDescription: event?.shortDescription || '',
@@ -37,7 +37,7 @@ export function EventForm({ event, mode }: EventFormProps) {
       icon: event?.visuals.icon || 'calendar',
     },
     tags: event?.tags || [],
-  });
+  }));
 
   const [tagInput, setTagInput] = useState('');
 
