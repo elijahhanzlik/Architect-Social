@@ -5,15 +5,16 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Grid, ContactShadows, Html, PerspectiveCamera } from '@react-three/drei';
 import { useAdminStore } from '@/lib/adminStore';
 import { useAppStore } from '@/lib/store';
+import { Activity, LocationNode } from '@/lib/types';
 import * as THREE from 'three';
 
 // Event Marker Component
-function EventMarker({ 
-  activity, 
-  location 
-}: { 
-  activity: any, 
-  location: any 
+function EventMarker({
+  activity,
+  location
+}: {
+  activity: Activity,
+  location: LocationNode
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const { selectedActivity, setSelectedActivity } = useAppStore();
@@ -296,9 +297,9 @@ export function MaastrichtCampus3D() {
     return activities.map((activity) => {
       const location = locations.find((loc) => loc.id === activity.locationId);
       return location ? { activity, location } : null;
-    }).filter(Boolean) as Array<{ 
-      activity: any, 
-      location: any 
+    }).filter(Boolean) as Array<{
+      activity: Activity,
+      location: LocationNode
     }>;
   }, [activities, locations]);
 

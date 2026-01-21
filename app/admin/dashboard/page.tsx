@@ -278,7 +278,7 @@ function DashboardContent() {
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <Calendar className="h-12 w-12 text-slate-400" />
                   <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">
-                    No events yet. Click "Add Event" to create one.
+                    No events yet. Click &quot;Add Event&quot; to create one.
                   </p>
                 </CardContent>
               </Card>
@@ -313,7 +313,7 @@ function DashboardContent() {
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <Map className="h-12 w-12 text-slate-400" />
                   <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">
-                    No locations yet. Click "Add Location" to create one.
+                    No locations yet. Click &quot;Add Location&quot; to create one.
                   </p>
                 </CardContent>
               </Card>

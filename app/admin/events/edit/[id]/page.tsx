@@ -1,23 +1,20 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
+import { use, useEffect, useMemo } from 'react';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { EventForm } from '@/components/EventForm';
 import { useAdminStore } from '@/lib/adminStore';
-import { Activity } from '@/lib/types';
 
 export default function EditEventPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const { activities, loadData } = useAdminStore();
-  const [event, setEvent] = useState<Activity | undefined>();
 
   useEffect(() => {
     loadData();
   }, [loadData]);
 
-  useEffect(() => {
-    const foundEvent = activities.find((a) => a.id === id);
-    setEvent(foundEvent);
+  const event = useMemo(() => {
+    return activities.find((a) => a.id === id);
   }, [id, activities]);
 
   if (!event) {

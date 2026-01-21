@@ -19,7 +19,7 @@ export function LocationForm({ location, mode }: LocationFormProps) {
   const router = useRouter();
   const { addLocation, updateLocation } = useAdminStore();
 
-  const [formData, setFormData] = useState<Partial<LocationNode>>({
+  const [formData, setFormData] = useState<Partial<LocationNode>>(() => ({
     id: location?.id || `loc_${Date.now()}`,
     name: location?.name || '',
     floorLevel: location?.floorLevel || 1,
@@ -31,7 +31,7 @@ export function LocationForm({ location, mode }: LocationFormProps) {
     },
     capacity: location?.capacity || 50,
     currentOccupancy: location?.currentOccupancy || 0,
-  });
+  }));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
